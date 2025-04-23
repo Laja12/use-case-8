@@ -1,5 +1,5 @@
 # modules/s3_bucket/main.tf
-resource "aws_s3_bucket" "that" {
+resource "aws_s3_bucket" "this" {
   bucket = var.bucket_name
 }
 
