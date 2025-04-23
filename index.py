@@ -6,7 +6,8 @@ s3 = boto3.client('s3')
 destination_bucket = os.environ['DEST_BUCKET']
 
 def lambda_handler(event, context):
-    for record in event['Records']:
+    print("Event: ", json.dumps(event))  # Log the event object
+    for record in event.get('Records', []):  # Use .get() to avoid KeyError
         source_bucket = record['s3']['bucket']['name']
         key = record['s3']['object']['key']
         
