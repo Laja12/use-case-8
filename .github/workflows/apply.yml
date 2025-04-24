@@ -26,6 +26,19 @@ jobs:
         with:
           terraform_version: 1.0.0  
 
+      - name: Install TFLint
+        run: |
+          curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+          tflint --init
+          tflint --config .tflint.hcl
+      
+
+      - name: Install Checkov
+        run: pip install checkov
+
+      - name: Run Checkov with soft fail
+        run: checkov --directory . --soft-fail
+
       - name: Initialize Terraform
         run: terraform init
 
