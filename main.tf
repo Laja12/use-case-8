@@ -35,7 +35,7 @@ module "lambda_function" {
   source               = "./modules/lambda_function"
   function_name        = "image_processor"
   handler              = "index.lambda_handler"
-  runtime              = "python3.8"
+  runtime              = "python3.9"
   role_arn             = module.iam.lambda_exec_role_arn
   filename             = "lambda.zip"
   environment_variables = {
